@@ -61,7 +61,7 @@ export default function App() {
       <div style={{ textAlign: "center", marginBottom: 48 }}>
         <h1 style={{ fontSize: 32, fontWeight: 700, 
           color: "#fff", margin: 0 }}>
-          Synapse
+          AgentX
         </h1>
         <p style={{ color: "#666", marginTop: 8, fontSize: 14 }}>
           Multi-agent research. Watch them think.

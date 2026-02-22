@@ -1,6 +1,9 @@
 from groq import Groq
 import json
 
+from dotenv import load_dotenv
+load_dotenv()  # Load GROQ_API_KEY from .env
+
 client = Groq()  # uses GROQ_API_KEY from env
 
 # ── Agent prompts ──────────────────────────────────────
@@ -28,6 +31,18 @@ CRITIC_PROMPT = """
 You are a Critic agent. Given the Synthesiser's answer, 
 aggressively challenge it. Find holes, assumptions, missing 
 evidence, and counterarguments. Be harsh but fair.
+"""
+
+VERDICT_PROMPT = """
+You are a Supervisor delivering a FINAL VERDICT.
+You have already received outputs from three specialist agents.
+Do NOT create new agents. Do NOT assign new tasks.
+Your only job: synthesise what you've received and deliver:
+1. The final answer
+2. Confidence score (0-100)
+3. What the Critic got right
+4. Your overall conclusion
+Be decisive. One paragraph max per section.
 """
 
 # ── Individual agent call ──────────────────────────────

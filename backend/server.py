@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import StreamingResponse
 from pydantic import BaseModel
-from main import run_agent, SEARCHER_PROMPT, SYNTHESISER_PROMPT, CRITIC_PROMPT, SUPERVISOR_PROMPT
+from main import VERDICT_PROMPT, run_agent, SEARCHER_PROMPT, SYNTHESISER_PROMPT, CRITIC_PROMPT, SUPERVISOR_PROMPT
 import json
 import asyncio
 
@@ -24,7 +24,7 @@ async def stream_agents(query: str):
         ("searcher", SEARCHER_PROMPT, "llama-3.1-8b-instant"),
         ("synthesiser", SYNTHESISER_PROMPT, "llama-3.3-70b-versatile"),
         ("critic", CRITIC_PROMPT, "llama-3.1-8b-instant"),
-        ("verdict", SUPERVISOR_PROMPT, "llama-3.3-70b-versatile"),
+        ("verdict", VERDICT_PROMPT, "llama-3.3-70b-versatile"),
     ]
 
     for agent_name, prompt, model in agents:
